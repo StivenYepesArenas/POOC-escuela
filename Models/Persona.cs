@@ -30,6 +30,7 @@ public class Persona
         }
     }
 
+    public Persona() { }
 
     public Persona(int edad, string nombre)
     {
@@ -37,8 +38,8 @@ public class Persona
         Nombre = nombre;
     }
 
-    public  void Saludar()
+    public virtual void Saludar()
     {
-     Console.WriteLine($"Hola, me llamo {Nombre} y tengo {Edad}, te esto saludando");
+        Console.WriteLine($"Hola, me llamo {Nombre} y tengo {Edad} años.");
     }
 }

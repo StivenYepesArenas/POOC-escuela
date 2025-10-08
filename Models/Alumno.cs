@@ -1,11 +1,10 @@
 namespace POO.Models
 {
-    public class Alumno
+    public class Alumno : Persona
     {
         private int _id;
-        private string _nombre = string.Empty;
-        private string _apellido = string.Empty;
-
+        public Alumno() { }
+        
         public int Id
         {
             get { return _id; }
@@ -18,44 +17,13 @@ namespace POO.Models
                 _id = value;
             }
         }
-        public string Nombre
-        {
-            get { return _nombre; }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new Exception("El nombre no puede ser vacio");
-                }
-                _nombre = value;
-            }
-        }
-
-        public string Apellido
-        {
-            get { return _apellido; }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new Exception("El apellido no puede ser vacio");
-                }
-                _apellido = value;
-            }
-        }
-
-        public Alumno() { }
-        public Alumno(int id, string nombre, string apellido)
+        public Alumno( int edad, string nombre, int id) : base(edad, nombre)
         {
             Id = id;
-            Nombre = nombre;
-            Apellido = apellido;
         }
-
-
-        public static void MostrarNombre()
+        public override void Saludar()
         {
-            Console.Write("Hola soy un Alumno y se decir mi nombre");
+            Console.WriteLine($"Hola, me llamo {Nombre}, tengo {Edad} años Y mi Id de alumno es {Id}.");
         }
     }
 
