@@ -1,0 +1,12 @@
+# Ignorar carpetas de compilación
+bin/
+obj/
+
+# Archivos temporales
+*.pdb
+*.exe
+*.dll
+
+# Archivos de configuración locales
+*.user
+*.vs/
