@@ -1,5 +1,3 @@
-using System.Runtime.CompilerServices;
-
 namespace POO.Models
 {
     public class Alumno
