@@ -28,4 +28,9 @@ class Director : Personas
         Console.WriteLine($"Hola, soy {Nombre}, director del departamento de {Departamento}.");
     }   
 
+    public void Supervisasr()
+    {
+        Console.WriteLine($"{Nombre} está supervisando las actividades.");
+    }
+
 }
