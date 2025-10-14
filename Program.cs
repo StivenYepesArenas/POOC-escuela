@@ -9,8 +9,7 @@ class Program
 
         try
         {
-            // Agregamos objetos de diferentes clases
-            personas.Add(new Personas("Juan", "Pérez", 45));
+            // Agregamos objetos de diferentes clases derivadas
             personas.Add(new Alumno("Ana", "Gómez", 17, "11°", 92));
             personas.Add(new Alumno("Carlos", "Gómez", 17, "9°", 30));
             personas.Add(new Profesor("Carlos", "Ramírez", 38, "Matemáticas"));

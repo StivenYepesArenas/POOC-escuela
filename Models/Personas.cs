@@ -3,7 +3,7 @@ using System.Diagnostics.Contracts;
 namespace POO.Models;
 
 //Establecer clase Personas con atributos Nombre, Apellido y Edad. Validar que el nombre y apellido no sean vacios y que la edad no sea negativa.
-public class Personas
+public abstract class Personas
 {
     //Campos privados para los atributos.
     private string _nombre = string.Empty;
@@ -50,9 +50,9 @@ public class Personas
     }
 
     //Constructor por defecto. y constructor con parametros.
-    public Personas() { }
+    protected Personas() { }
 
-    public Personas(string nombre, string apellido, int edad)
+    protected Personas(string nombre, string apellido, int edad)
     {
         Nombre = nombre;
         Apellido = apellido;
@@ -61,9 +61,11 @@ public class Personas
 
     //metodo para presentarse.
 
-    public virtual void Presentarse()
+    public abstract void Presentarse();
+    public void Saludar()
     {
-        Console.WriteLine($"Hola, me llamo {Nombre} {Apellido} y tengo {Edad} años.");
+        Console.WriteLine($"Hola, buenos dias.");
     }
+    
 
 }
