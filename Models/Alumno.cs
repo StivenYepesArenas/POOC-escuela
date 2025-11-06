@@ -38,11 +38,11 @@ public class Alumno : Persona, IEstudiante
     {
         Console.WriteLine($"Hola, soy {Nombre}, alumno del grado {Grado}, y mi promedio es {Promedio}.");
     }
-    public void Estudiar()
+    public virtual void Estudiar()
     {
         Console.WriteLine($"{Nombre} está estudiando para mejorar su promedio.");
     }
-    public void RendirExamen()
+    public virtual void RendirExamen()
     {
         Console.WriteLine($"{Nombre} está rindiendo un examen.");
     }

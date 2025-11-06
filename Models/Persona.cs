@@ -1,6 +1,6 @@
 namespace POO.Models;
 
-public abstract class Persona  
+public abstract class  Persona  
 {
     //Campos privados para los atributos.
     private string _nombre = string.Empty;
