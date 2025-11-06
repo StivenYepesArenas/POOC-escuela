@@ -12,8 +12,8 @@ class Program
             // Agregamos objetos de diferentes clases derivadas
             personas.Add(new Alumno("Ana", "Gómez", 17, "11°", 92));
             personas.Add(new Alumno("Carlos", "Gómez", 17, "9°", 30));
-            personas.Add(new Profesor("Carlos", "Ramírez", 38, "Matemáticas"));
-            personas.Add(new Director("María", "López", 50, "Ciencias"));
+            personas.Add(new Profesor("Carlos", "Ramírez", 38, "Matemáticas", 1500m));
+            personas.Add(new Director("María", "López", 50, "Ciencias", 2000m));
         }
         catch (ArgumentException ex)
         {
@@ -50,11 +50,11 @@ class Program
                 }
                 else if (persona is Profesor profesor)
                 {
-                    profesor.Enseñar();
+                    profesor.MostrarInformacion();
                 }
                 else if (persona is Director director)
                 {
-                    director.Supervisasr();
+                    director.MostrarInformacion();
                 }
             }
             catch (Exception ex)

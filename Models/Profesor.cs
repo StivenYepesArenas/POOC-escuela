@@ -1,8 +1,9 @@
 namespace POO.Models;
 
-class Profesor : Personas
+class Profesor : Personas, IEmpleado
 {
     private string _materia = string.Empty;
+    private decimal _salario;
 
     public string Materia
     {
@@ -17,12 +18,25 @@ class Profesor : Personas
         }
 
     }
+    public decimal Salario
+    {
+        get { return _salario; }
+        set
+        {
+            if (value < 0)
+            {
+                throw new ArgumentException("El salario no puede ser negativo.");
+            }
+            _salario = value;
+        }
+    }
 
     public Profesor() { }
 
-    public Profesor(string nombre, string apellido, int edad, string materia) : base(nombre, apellido, edad)
+    public Profesor(string nombre, string apellido, int edad, string materia, decimal salario) : base(nombre, apellido, edad)
     {
         Materia = materia;
+        Salario = salario;
     }
 
     public void Enseñar()
@@ -34,5 +48,13 @@ class Profesor : Personas
     {
         Console.WriteLine($"Hola, soy el profesor {Nombre}, enseño {Materia}.");
 
+    }
+    public decimal CalcularSalario()
+    {
+        return Salario;
+    }
+    public void MostrarInformacion()
+    {
+        Console.WriteLine($"Profesor: {Nombre} {Apellido}, Edad: {Edad}, Materia: {Materia}, Salario: {Salario:C}");
     }
 }
