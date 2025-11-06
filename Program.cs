@@ -4,12 +4,17 @@ class Program
 {
     static void Main()
     {
-        // Creamos una lista del tipo de la clase base
-        List<Personas> personas = new List<Personas>();
+        var personas = new List<Persona>();
 
+        AgregarPersonas(personas);
+        MostrarPresentaciones(personas);
+        EjecutarAcciones(personas);
+    }
+
+    static void AgregarPersonas(List<Persona> personas)
+    {
         try
         {
-            // Agregamos objetos de diferentes clases derivadas
             personas.Add(new Alumno("Ana", "Gómez", 17, "11°", 92));
             personas.Add(new Alumno("Carlos", "Gómez", 17, "9°", 30));
             personas.Add(new Profesor("Carlos", "Ramírez", 38, "Matemáticas", 1500m));
@@ -23,38 +28,46 @@ class Program
         {
             Console.WriteLine($"Error inesperado: {ex.Message}");
         }
+    }
 
+    static void MostrarPresentaciones(List<Persona> personas)
+    {
         Console.WriteLine("=== Presentaciones ===");
         foreach (var persona in personas)
         {
             try
             {
-                persona.Presentarse(); // Aquí ocurre el POLIMORFISMO
+                persona.Presentarse(); // POLIMORFISMO
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al presentar: {ex.Message}");
             }
         }
+    }
 
+    static void EjecutarAcciones(List<Persona> personas)
+    {
         Console.WriteLine("\n=== Acciones individuales ===");
 
-        // Ahora ejecutamos métodos específicos usando casting
         foreach (var persona in personas)
         {
             try
             {
-                if (persona is Alumno alumno)
+                if (persona is IEstudiante estudiante)
                 {
-                    alumno.Estudiar();
-                }
-                else if (persona is Profesor profesor)
-                {
-                    profesor.MostrarInformacion();
+                    estudiante.Estudiar();
+                    estudiante.RendirExamen();
                 }
                 else if (persona is Director director)
                 {
-                    director.MostrarInformacion();
+                    director.Supervisar();
+                    Console.WriteLine($"Salario (Director): {director.CalcularSalario():C}");
+                }
+                else if (persona is IEmpleado empleado)
+                {
+                    empleado.Trabajar();
+                    Console.WriteLine($"Salario: {empleado.CalcularSalario():C}");
                 }
             }
             catch (Exception ex)

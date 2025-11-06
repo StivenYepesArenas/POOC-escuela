@@ -1,6 +1,5 @@
 namespace POO.Models;
-
-class Profesor : Personas, IEmpleado
+public class Profesor : Persona, IEmpleado
 {
     private string _materia = string.Empty;
     private decimal _salario;
@@ -16,7 +15,6 @@ class Profesor : Personas, IEmpleado
             }
             _materia = value;
         }
-
     }
     public decimal Salario
     {
@@ -39,11 +37,6 @@ class Profesor : Personas, IEmpleado
         Salario = salario;
     }
 
-    public void Enseñar()
-    {
-        Console.WriteLine($"{Nombre} está enseñando la materia de {Materia}.");
-    }
-
     public override void Presentarse()
     {
         Console.WriteLine($"Hola, soy el profesor {Nombre}, enseño {Materia}.");
@@ -51,10 +44,12 @@ class Profesor : Personas, IEmpleado
     }
     public decimal CalcularSalario()
     {
+        decimal bonus = Salario * 0.05m;
+        Salario += bonus;
         return Salario;
     }
-    public void MostrarInformacion()
+    public void Trabajar()
     {
-        Console.WriteLine($"Profesor: {Nombre} {Apellido}, Edad: {Edad}, Materia: {Materia}, Salario: {Salario:C}");
+        Console.WriteLine($"{Nombre} está dando clase de {Materia}.");
     }
 }

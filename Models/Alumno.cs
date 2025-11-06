@@ -1,12 +1,9 @@
 namespace POO.Models;
 
-//Establecer clase Alumno que herede de Personas.
-
-class Alumno : Personas
+public class Alumno : Persona, IEstudiante
 {
     private string _grado = string.Empty;
     private int _promedio;
-
     public string Grado
     {
         get { return _grado; }
@@ -19,7 +16,6 @@ class Alumno : Personas
             _grado = value;
         }
     }
-
     public int Promedio
     {
         get { return _promedio; }
@@ -32,24 +28,23 @@ class Alumno : Personas
             _promedio = value;
         }
     }
-
     public Alumno() { }
     public Alumno(string nombre, string apellido, int edad, string grado, int promedio) : base(nombre, apellido, edad)
     {
         Grado = grado;
         Promedio = promedio;
     }
-
-    public void Estudiar()
-    {
-        Console.WriteLine($"{Nombre} está estudiando para mejorar su promedio.");
-
-    }
-
     public override void Presentarse()
     {
         Console.WriteLine($"Hola, soy {Nombre}, alumno del grado {Grado}, y mi promedio es {Promedio}.");
-
+    }
+    public void Estudiar()
+    {
+        Console.WriteLine($"{Nombre} está estudiando para mejorar su promedio.");
+    }
+    public void RendirExamen()
+    {
+        Console.WriteLine($"{Nombre} está rindiendo un examen.");
     }
 
 }

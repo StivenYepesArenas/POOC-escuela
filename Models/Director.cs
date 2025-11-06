@@ -1,8 +1,5 @@
-using System.ComponentModel;
-
 namespace POO.Models;
-
-class Director : Personas, IEmpleado
+public class Director : Persona, IEmpleado
 {
     private string _departamento = string.Empty;
     private decimal _salario;
@@ -42,17 +39,19 @@ class Director : Personas, IEmpleado
         Console.WriteLine($"Hola, soy {Nombre}, director del departamento de {Departamento}.");
     }
 
-    public void Supervisasr()
+    public void Supervisar()
     {
         Console.WriteLine($"{Nombre} está supervisando las actividades.");
     }
     public decimal CalcularSalario()
     {
+        decimal bonus = Salario * 0.10m;
+        Salario += bonus;
         return Salario;
     }
-    public void MostrarInformacion()
+    public void Trabajar()
     {
-        Console.WriteLine($"Director: {Nombre} {Apellido}, Edad: {Edad}, Departamento: {Departamento}, Salario: {Salario:C}");
+        Console.WriteLine($"{Nombre} está trabajando en la gestión del departamento de {Departamento}.");
     }
 
 }
