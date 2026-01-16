@@ -1,9 +1,10 @@
 namespace POO.Models;
+
 public class Profesor : Persona
 {
-    public string  Codigo { get; private set; }
-    public string  Materia { get; private set; }
-    public bool   Activo  { get; private set; }
+    public string Codigo { get; private set; }
+    public string Materia { get; private set; }
+    public bool Activo { get; private set; }
 
     public Profesor(
         string codigo,
@@ -24,6 +25,6 @@ public class Profesor : Persona
     {
         Activo = false;
     }
-    
+
 
 }
