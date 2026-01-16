@@ -1,79 +1,59 @@
 ﻿using POO.Models;
+using POO.Services;
 
-class Program
+Console.WriteLine("=== PRUEBA ALUMNO SERVICE ===");
+
+var alumnoService = new AlumnoService();
+try
 {
-    static void Main()
-    {
-        var personas = new List<Persona>();
+    var alumno1 = new Alumno(
+            codigo: "A002",
+            nombre: "Maria",
+            apellido: "Gomez",
+            edad: 18,
+            grado: "11°",
+            promedio: 90
+        );
+    var alumno2 = new Alumno(
+            codigo: "A001",
+            nombre: "Juan",
+            apellido: "Perez",
+            edad: 20,
+            grado: "10°",
+            promedio: 85
+            );
 
-        AgregarPersonas(personas);
-        MostrarPresentaciones(personas);
-        EjecutarAcciones(personas);
-    }
+    alumnoService.RegisterAlumno(alumno1);
+    alumnoService.RegisterAlumno(alumno2);
+    Console.WriteLine("Alumnos registrados correctamente.");
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Error al registrar alumnos: {ex.Message}");
+}
 
-    static void AgregarPersonas(List<Persona> personas)
-    {
-        try
-        {
-            personas.Add(new Alumno("Ana", "Gómez", 17, "11°", 92));
-            personas.Add(new Alumno("Carlos", "Gómez", 17, "9°", 30));
-            personas.Add(new Profesor("Carlos", "Ramírez", 38, "Matemáticas", 1500m));
-            personas.Add(new Director("María", "López", 50, "Ciencias", 2000m));
-        }
-        catch (ArgumentException ex)
-        {
-            Console.WriteLine($"Error de validación al agregar personas: {ex.Message}");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error inesperado: {ex.Message}");
-        }
-    }
+Console.WriteLine("\n=== LISTA DE ALUMNOS ===");
 
-    static void MostrarPresentaciones(List<Persona> personas)
-    {
-        Console.WriteLine("=== Presentaciones ===");
-        foreach (var persona in personas)
-        {
-            try
-            {
-                persona.Presentarse(); // POLIMORFISMO
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al presentar: {ex.Message}");
-            }
-        }
-    }
+foreach (var alumno in alumnoService.ObtenerTodos())
+{
+    Console.WriteLine($"Código: {alumno.Codigo}, Nombre: {alumno.Nombre} {alumno.Apellido},Activo: {alumno.Activo}");
+}
 
-    static void EjecutarAcciones(List<Persona> personas)
-    {
-        Console.WriteLine("\n=== Acciones individuales ===");
+Console.WriteLine("\n=== DESACTIVAR ALUMNO A001 ===");
+try
+{
+    alumnoService.DesactivarAlumno("A001");
+    Console.WriteLine("Alumno desactivado correctamente.");
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Error: {ex.Message}");
+}
 
-        foreach (var persona in personas)
-        {
-            try
-            {
-                if (persona is IEstudiante estudiante)
-                {
-                    estudiante.Estudiar();
-                    estudiante.RendirExamen();
-                }
-                else if (persona is Director director)
-                {
-                    director.Supervisar();
-                    Console.WriteLine($"Salario (Director): {director.CalcularSalario():C}");
-                }
-                else if (persona is IEmpleado empleado)
-                {
-                    empleado.Trabajar();
-                    Console.WriteLine($"Salario: {empleado.CalcularSalario():C}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error en acción individual: {ex.Message}");
-            }
-        }
-    }
+Console.WriteLine("\n=== ESTADO FINAL ===");
+foreach (var alumno in alumnoService.ObtenerTodos())
+{
+    Console.WriteLine(
+        $"Código: {alumno.Codigo} | Nombre: {alumno.Nombre} | Activo: {alumno.Activo}"
+    );
 }

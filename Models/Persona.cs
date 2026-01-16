@@ -1,59 +1,30 @@
-namespace POO.Models;
-
-public abstract class  Persona  
+namespace POO.Models
 {
-    //Campos privados para los atributos.
-    private string _nombre = string.Empty;
-    private string _apellido = string.Empty;
-    private int _edad;
-
-    public string Nombre
+    public abstract class Persona
     {
-        get { return _nombre; }
-        set
+        public string Nombre { get; }
+        public string Apellido { get; }
+        public int Edad { get; private set; }
+
+        protected Persona(string nombre, string apellido, int edad)
         {
-            if (string.IsNullOrEmpty(value))
-            {
-                throw new ArgumentException("El nombre no puede ser vacio");
-            }
-            _nombre = value;
+            if (string.IsNullOrWhiteSpace(nombre))
+                throw new ArgumentException("El nombre es obligatorio.");
+
+            if (string.IsNullOrWhiteSpace(apellido))
+                throw new ArgumentException("El apellido es obligatorio.");
+
+            if (edad < 0)
+                throw new ArgumentOutOfRangeException(nameof(edad));
+
+            Nombre = nombre;
+            Apellido = apellido;
+            Edad = edad;
+        }
+
+        public void CumplirAnios()
+        {
+            Edad++;
         }
     }
-    public string Apellido
-    {
-        get { return _apellido; }
-        set
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                throw new ArgumentException("El apellido no puede ser vacio", nameof(value));
-            }
-            _apellido = value;
-        }
-    }
-
-    public int Edad
-    {
-        get { return _edad; }
-        set
-        {
-            if (value < 0)
-            {
-                throw new ArgumentOutOfRangeException("La edad no puede ser negativa");
-            }
-            _edad = value;
-        }
-    }
-
-    protected Persona  () { }
-
-    protected Persona  (string nombre, string apellido, int edad)
-    {
-        Nombre = nombre;
-        Apellido = apellido;
-        Edad = edad;
-    }
-
-    public abstract void Presentarse();
-    
 }

@@ -1,50 +1,38 @@
-namespace POO.Models;
-
-public class Alumno : Persona, IEstudiante
+namespace POO.Models
 {
-    private string _grado = string.Empty;
-    private int _promedio;
-    public string Grado
+    public class Alumno : Persona
     {
-        get { return _grado; }
-        set
-        {
-            if (string.IsNullOrEmpty(value))
-            {
-                throw new Exception("El grado no puede ser vacio");
-            }
-            _grado = value;
-        }
-    }
-    public int Promedio
-    {
-        get { return _promedio; }
-        set
-        {
-            if (value < 0 || value > 100)
-            {
-                throw new Exception("El promedio debe estar entre 0 y 100");
-            }
-            _promedio = value;
-        }
-    }
-    public Alumno() { }
-    public Alumno(string nombre, string apellido, int edad, string grado, int promedio) : base(nombre, apellido, edad)
-    {
-        Grado = grado;
-        Promedio = promedio;
-    }
-    public override void Presentarse()
-    {
-        Console.WriteLine($"Hola, soy {Nombre}, alumno del grado {Grado}, y mi promedio es {Promedio}.");
-    }
-    public virtual void Estudiar()
-    {
-        Console.WriteLine($"{Nombre} está estudiando para mejorar su promedio.");
-    }
-    public virtual void RendirExamen()
-    {
-        Console.WriteLine($"{Nombre} está rindiendo un examen.");
-    }
+        public string Codigo { get; private set; }
+        public string Grado { get; private set; }
+        public int Promedio { get; private set; }
+        public bool Activo { get; private set; }
 
+        public Alumno(
+            string codigo,
+            string nombre,
+            string apellido,
+            int edad,
+            string grado,
+            int promedio
+        ) : base(nombre, apellido, edad)
+        {
+            if (string.IsNullOrWhiteSpace(codigo))
+                throw new ArgumentException("El código es obligatorio.");
+
+            Codigo = codigo;
+            Grado = grado;
+            Promedio = promedio;
+            Activo = true;
+        }
+
+        public void Desactivar()
+        {
+            Activo = false;
+        }
+
+        public void CambiarPromedio(int nuevoPromedio)
+        {
+            Promedio = nuevoPromedio;
+        }
+    }
 }
