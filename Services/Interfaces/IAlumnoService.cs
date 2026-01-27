@@ -3,10 +3,10 @@ namespace POO.Services.Interfaces
 {
     public interface IAlumnoService
     {
-        void RegisterAlumno(Alumno alumno);
-        Alumno ObtenerPorCodigo(string codigo);
-        IEnumerable<Alumno> ObtenerTodos();
-        void DesactivarAlumno(string codigo);
+        void Register(Alumno alumno);
+        Alumno GetByCode(string codigo);
+        IEnumerable<Alumno> GetAll();
+        void Desactivate(string codigo);
 
     }
 }

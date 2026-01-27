@@ -1,9 +1,12 @@
 ﻿using POO.Models;
+using POO.Repositories;
 using POO.Services;
+
 
 Console.WriteLine("=== PRUEBA ALUMNO SERVICE ===");
 
-var alumnoService = new AlumnoService();
+var alumnoRepository = new AlumnoRepositoryInMemory();
+var alumnoService = new AlumnoService(alumnoRepository);
 
 try
 {
@@ -24,8 +27,8 @@ try
             promedio: 85
             );
 
-    alumnoService.RegisterAlumno(alumno1);
-    alumnoService.RegisterAlumno(alumno2);
+    alumnoService.Register(alumno1);
+    alumnoService.Register(alumno2);
     Console.WriteLine("Alumnos registrados correctamente.");
 }
 catch (Exception ex)
@@ -35,7 +38,7 @@ catch (Exception ex)
 
 Console.WriteLine("\n=== LISTA DE ALUMNOS ===");
 
-foreach (var alumno in alumnoService.ObtenerTodos())
+foreach (var alumno in alumnoService.GetAll())
 {
     Console.WriteLine($"Código: {alumno.Codigo}, Nombre: {alumno.Nombre} {alumno.Apellido},Activo: {alumno.Activo}");
 }
@@ -43,7 +46,7 @@ foreach (var alumno in alumnoService.ObtenerTodos())
 Console.WriteLine("\n=== DESACTIVAR ALUMNO A001 ===");
 try
 {
-    alumnoService.DesactivarAlumno("A001");
+    alumnoService.Desactivate("A001");
     Console.WriteLine("Alumno desactivado correctamente.");
 }
 catch (Exception ex)
@@ -52,7 +55,7 @@ catch (Exception ex)
 }
 
 Console.WriteLine("\n=== ESTADO FINAL ===");
-foreach (var alumno in alumnoService.ObtenerTodos())
+foreach (var alumno in alumnoService.GetAll())
 {
     Console.WriteLine(
         $"Código: {alumno.Codigo} | Nombre: {alumno.Nombre} | Activo: {alumno.Activo}"
