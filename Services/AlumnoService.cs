@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using POO.Models;
 using POO.Repositories.Interfaces;
 using POO.Services.Interfaces;
@@ -50,5 +51,20 @@ namespace POO.Services
 
             alumno.Desactivar();
         }
+
+        public void Remove(string codigo)
+        {
+            if (string.IsNullOrWhiteSpace(codigo))
+                throw new ArgumentException("El código es obligatorio.");
+            var alumno = GetByCode(codigo);
+            _repository.Remove(alumno);
+        }
+
+        public void UpdateBasicData(string codigo, string nombre, string apellido, int edad)
+        {
+            var alumno = GetByCode(codigo);
+            alumno.UpdateBasicData(nombre, apellido, edad);
+        }   
+        
     }
 }

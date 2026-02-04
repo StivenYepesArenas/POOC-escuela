@@ -43,22 +43,37 @@ foreach (var alumno in alumnoService.GetAll())
     Console.WriteLine($"Código: {alumno.Codigo}, Nombre: {alumno.Nombre} {alumno.Apellido}, Promedio: {alumno.Promedio}     Activo: {alumno.Activo}");
 }
 
-Console.WriteLine("\n=== DESACTIVAR ALUMNO A001 ===");
+// Console.WriteLine("\n=== DESACTIVAR ALUMNO A001 ===");
+// try
+// {
+//     alumnoService.Desactivate("A001");
+//     Console.WriteLine("Alumno desactivado correctamente.");
+// }
+// catch (Exception ex)
+// {
+//     Console.WriteLine($"Error: {ex.Message}");
+// }
+
+
+Console.WriteLine("\n=== ATUALIZAR DATOS A002 ===");
 try
 {
-    alumnoService.Desactivate("A001");
-    Console.WriteLine("Alumno desactivado correctamente.");
+    alumnoService.UpdateBasicData("A002", "Maria Fernanda", "Gomez Ruiz", 19);
+    Console.WriteLine("Datos del alumno actualizados correctamente.");
 }
 catch (Exception ex)
 {
     Console.WriteLine($"Error: {ex.Message}");
 }
 
+
+
+
 Console.WriteLine("\n=== ESTADO FINAL ===");
 foreach (var alumno in alumnoService.GetAll())
 {
     Console.WriteLine(
-        $"Código: {alumno.Codigo} | Nombre: {alumno.Nombre} | Activo: {alumno.Activo}"
+        $"Código: {alumno.Codigo} | Nombre: {alumno.Nombre} {alumno.Apellido} | Activo: {alumno.Activo}"
     );
 }
 

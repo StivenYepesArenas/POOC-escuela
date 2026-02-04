@@ -2,8 +2,8 @@ namespace POO.Models
 {
     public abstract class Persona
     {
-        public string Nombre { get; }
-        public string Apellido { get; }
+        public string Nombre { get; private set;}
+        public string Apellido { get; private set;}
         public int Edad { get; private set; }
 
         protected Persona(string nombre, string apellido, int edad)
@@ -22,9 +22,11 @@ namespace POO.Models
             Edad = edad;
         }
 
-        public void CumplirAnios()
+        public void UpdateBasicData(string nombre, string apellido, int edad)
         {
-            Edad++;
+            Nombre = nombre;
+            Apellido = apellido;    
+            Edad = edad;
         }
     }
 }

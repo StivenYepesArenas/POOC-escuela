@@ -27,11 +27,10 @@ namespace POO.Repositories
                 _alumnos[index] = alumno;
         }
 
-        public void Remove(string codigo)
+        public void Remove(Alumno alumno)
         {
-            var alumno = _alumnos.FirstOrDefault(a => a.Codigo == codigo);
-            if (alumno != null)
-                _alumnos.Remove(alumno);
+            _alumnos.Remove(alumno);
         }
+
     }
 }
