@@ -40,7 +40,7 @@ Console.WriteLine("\n=== LISTA DE ALUMNOS ===");
 
 foreach (var alumno in alumnoService.GetAll())
 {
-    Console.WriteLine($"Código: {alumno.Codigo}, Nombre: {alumno.Nombre} {alumno.Apellido},Activo: {alumno.Activo}");
+    Console.WriteLine($"Código: {alumno.Codigo}, Nombre: {alumno.Nombre} {alumno.Apellido}, Promedio: {alumno.Promedio}     Activo: {alumno.Activo}");
 }
 
 Console.WriteLine("\n=== DESACTIVAR ALUMNO A001 ===");
@@ -64,60 +64,60 @@ foreach (var alumno in alumnoService.GetAll())
 
                                      //-------------------------------------------------------------//
 
-Console.WriteLine("=== PRUEBA PROFESOR SERVICE ===");
+// Console.WriteLine("=== PRUEBA PROFESOR SERVICE ===");
 
-var profesorService = new ProfesorService();
+// var profesorService = new ProfesorService();
 
-try
-{
-    var profesor1 = new Profesor(
-        codigo: "P001",
-        nombre: "Luis",
-        apellido: "Martinez",
-        edad: 35,
-        materia: "Matemáticas"
-    );
-    var profesor2 = new Profesor(
-        codigo: "P002",
-        nombre: "Ana",
-        apellido: "Lopez",
-        edad: 29,
-        materia: "Historia"
-    );
-    profesorService.RegisterProfesor(profesor1);
-    profesorService.RegisterProfesor(profesor2);
-    Console.WriteLine("Profesores registrados correctamente.");
-}
-catch (Exception ex)
-{
-    Console.WriteLine($"Error al registrar profesores: {ex.Message}");
-}
+// try
+// {
+//     var profesor1 = new Profesor(
+//         codigo: "P001",
+//         nombre: "Luis",
+//         apellido: "Martinez",
+//         edad: 35,
+//         materia: "Matemáticas"
+//     );
+//     var profesor2 = new Profesor(
+//         codigo: "P002",
+//         nombre: "Ana",
+//         apellido: "Lopez",
+//         edad: 29,
+//         materia: "Historia"
+//     );
+//     profesorService.RegisterProfesor(profesor1);
+//     profesorService.RegisterProfesor(profesor2);
+//     Console.WriteLine("Profesores registrados correctamente.");
+// }
+// catch (Exception ex)
+// {
+//     Console.WriteLine($"Error al registrar profesores: {ex.Message}");
+// }
 
 
-Console.WriteLine("\n=== LISTA DE PROFESORES ===");
+// Console.WriteLine("\n=== LISTA DE PROFESORES ===");
 
-foreach (var profesor in profesorService.ObtenerTodos())
-{
-    Console.WriteLine($"Código: {profesor.Codigo}, Nombre: {profesor.Nombre} {profesor.Apellido}, Activo: {profesor.Activo}");
-}
+// foreach (var profesor in profesorService.ObtenerTodos())
+// {
+//     Console.WriteLine($"Código: {profesor.Codigo}, Nombre: {profesor.Nombre} {profesor.Apellido}, Activo: {profesor.Activo}");
+// }
 
-Console.WriteLine("\n=== DESACTIVAR PROFESOR P001 ===");
+// Console.WriteLine("\n=== DESACTIVAR PROFESOR P001 ===");
 
-try
-{
-    profesorService.DesactivarProfesor("P001");
-    Console.WriteLine("Profesor desactivado correctamente.");
-}
-catch (Exception ex)
-{
-    Console.WriteLine($"Error: {ex.Message}");
-}
+// try
+// {
+//     profesorService.DesactivarProfesor("P001");
+//     Console.WriteLine("Profesor desactivado correctamente.");
+// }
+// catch (Exception ex)
+// {
+//     Console.WriteLine($"Error: {ex.Message}");
+// }
 
-Console.WriteLine("\n=== ESTADO FINAL ===");
+// Console.WriteLine("\n=== ESTADO FINAL ===");
 
-foreach (var profesor in profesorService.ObtenerTodos())
-{
-    Console.WriteLine(
-        $"Código: {profesor.Codigo} | Nombre: {profesor.Nombre} | Activo: {profesor.Activo}"
-    );
-}
+// // foreach (var profesor in profesorService.ObtenerTodos())
+// // {
+// //     Console.WriteLine(
+// //         $"Código: {profesor.Codigo} | Nombre: {profesor.Nombre} | Activo: {profesor.Activo}"
+// //     );
+// // }

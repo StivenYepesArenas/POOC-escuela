@@ -17,7 +17,7 @@ namespace POO.Services
             if (alumno == null)
                 throw new ArgumentNullException(nameof(alumno));
 
-            if (_repository.GetByCode(alumno.Codigo) !=null)
+            if (_repository.GetByCode(alumno.Codigo) != null)
                 throw new InvalidOperationException("Ya existe un alumno con ese código.");
 
             _repository.Add(alumno);

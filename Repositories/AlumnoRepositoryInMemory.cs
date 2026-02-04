@@ -20,5 +20,18 @@ namespace POO.Repositories
             return _alumnos;
         }
 
+        public void Update(Alumno alumno)
+        {
+            var index = _alumnos.FindIndex(a => a.Codigo == alumno.Codigo);
+            if (index != -1)
+                _alumnos[index] = alumno;
+        }
+
+        public void Remove(string codigo)
+        {
+            var alumno = _alumnos.FirstOrDefault(a => a.Codigo == codigo);
+            if (alumno != null)
+                _alumnos.Remove(alumno);
+        }
     }
 }

@@ -6,5 +6,8 @@ namespace POO.Repositories.Interfaces
         void Add(Alumno alumno);
         Alumno? GetByCode(string codigo);
         IEnumerable<Alumno> GetAll();
+
+        void Update(Alumno alumno);
+        void Remove(string codigo);
     }
 }
